@@ -52,3 +52,10 @@ MAC = MAC.split(':')
 print(bin(int('AAAA',16))[2:])
 
 print('{0}{1}{2}'.format(bin(int(MAC[0],16))[2:],bin(int(MAC[1],16))[2:],bin(int(MAC[2],16))[2:]))
+
+print('_EX 3.8_______________________________________________________________')
+
+IP = '192.168.3.1'
+IP = IP.split('.')
+print('{:>10}{:>15}{:>20}{:>25}'.format(IP[0],IP[1],IP[2],IP[3]))
+print('{:>10}{:>15}{:>20}{:>25}'.format('{:>08b}'.format(int(IP[0])), '{:>08b}'.format(int(IP[1])),'{:>08b}'.format(int(IP[2])),'{:>08b}'.format(int(IP[3]))))

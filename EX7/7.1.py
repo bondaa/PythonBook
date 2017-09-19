@@ -53,11 +53,11 @@ def generate_access_config(access, ps = False):
     for intf in access:
         config.append(intf)
         for line in access_template:
-            if line.endswith('vlan') == True:
+            if line.endswith('vlan'):
                 config.append('{} {}'.format(line, access[intf]))
             else:
                 config.append(line)
-        if ps == True:
+        if ps:
             config.extend(port_security)
     return(config)
 
@@ -85,13 +85,13 @@ def generate_access_config(access, ps = False):
     for intf in access:
         config.clear()
         for line in access_template:
-            if line.endswith('vlan') == True:
+            if line.endswith('vlan'):
                 config.append('{} {}'.format(line, access[intf]))
             else:
                 config.append(line)
-        if ps == True:
+        if ps:
             config.extend(port_security)
-        config_all[intf] = config
+        config_all[intf] = config.copy()
     return(config_all)
 
 print(generate_access_config(access_dict))

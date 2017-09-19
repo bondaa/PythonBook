@@ -22,16 +22,16 @@ def get_int_vlan_map(file):
     cnt = 1
     with open(file, 'r') as f:
         for line in f:
-            if line.startswith('interface ') == True:
+            if line.startswith('interface '):
                 interface = line.split()[1]
-            if line.startswith(' switchport trunk allowed vlan') == True:
+            if line.startswith(' switchport trunk allowed vlan'):
                 vlans = line.split()[4]
                 vlans = [int(i) for i in vlans.split(',')]
                 trunk_ports[interface] = vlans
-            if line.startswith(' switchport access vlan') == True:
+            if line.startswith(' switchport access vlan'):
                 vlans = line.split()[3].split('.')
                 access_ports[interface] = int(vlans[0])
-            if line.startswith(' switchport mode access') == True:
+            if line.startswith(' switchport mode access'):
                 cnt = 1
                 continue
             if line.startswith(' duplex auto') and cnt == 1:

@@ -14,7 +14,7 @@ def generate_trunk_config(trunk):
     for intf in trunk:
         config.append(intf)
         for line in trunk_template:
-            if line.endswith('vlan') == True:
+            if line.endswith('vlan'):
                 config.append('{} {}'.format(line,' '.join([str(i) for i in trunk[intf]])))
             else:
                 config.append(line)

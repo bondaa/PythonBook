@@ -24,19 +24,18 @@ def get_int_vlan_map(file):
         for line in f:
             if line.startswith('interface '):
                 interface = line.split()[1]
+                continue
             if line.startswith(' switchport trunk allowed vlan'):
                 vlans = line.split()[4]
                 vlans = [int(i) for i in vlans.split(',')]
                 trunk_ports[interface] = vlans
+                continue
             if line.startswith(' switchport access vlan'):
                 vlans = line.split()[3].split('.')
                 access_ports[interface] = int(vlans[0])
-            if line.startswith(' switchport mode access'):
-                cnt = 1
                 continue
-            if line.startswith(' duplex auto') and cnt == 1:
-                    access_ports[interface] = 1
-                    cnt = 0
+            if line.startswith(' switchport mode access'):
+                access_ports[interface] = 1
     return(trunk_ports,access_ports)
 
 #print( get_int_vlan_map('config_sw1.txt')) #7.3

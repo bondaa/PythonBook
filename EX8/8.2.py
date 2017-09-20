@@ -9,11 +9,15 @@ def parse_cdp_neighbors(st):
     st = [i.strip() for i in st.split('\n')]
     for line in st:
         if c == 1:
+            for i in range(len(line)-1):
+                if i 
+            '''
             line = [i for i in line.split('  ')]
             print(line)
             for i in line:
                 if i == '': 
                     line.remove('')
+            '''
             print(line)
             continue
         if line.startswith('Device'):

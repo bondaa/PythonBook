@@ -6,11 +6,20 @@ def parse_cdp_neighbors(st):
     device = st[:3]
     result = {}
     c = 0
+    a=[]
     st = [i.strip() for i in st.split('\n')]
     for line in st:
         if c == 1:
-            for i in range(len(line)-1):
-                if i 
+            #print(line)
+            for i in line.split('  '):
+                if i != '':
+                    a.append(i.strip())
+                    count += 1
+                if count == 6:
+                    result[device+]
+            
+            print(a)
+                
             '''
             line = [i for i in line.split('  ')]
             print(line)
@@ -18,7 +27,6 @@ def parse_cdp_neighbors(st):
                 if i == '': 
                     line.remove('')
             '''
-            print(line)
             continue
         if line.startswith('Device'):
             c = 1

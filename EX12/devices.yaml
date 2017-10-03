@@ -1,6 +1,26 @@
 routers:
 - device_type: cisco_ios
-  ip: 192.168.100.1
+  ip: 192.168.10.7
+  username: ciscod
+  password: cisco
+  secret: cisco
+- device_type: cisco_ios
+  ip: 192.168.10.7
+  username: cisco
+  password: cisco
+  secret: cisco
+- device_type: cisco_ios
+  ip: 192.168.10.87
+  username: cisco
+  password: cisco
+  secret: cisco
+- device_type: cisco_ios
+  ip: 192.168.10.8
+  username: cisco
+  password: cisco
+  secret: cisco
+- device_type: cisco_ios
+  ip: 192.168.10.9
   username: cisco
   password: cisco
   secret: cisco

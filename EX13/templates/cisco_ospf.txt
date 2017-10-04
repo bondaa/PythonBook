@@ -1,0 +1,17 @@
+router ospf {{process| default(1)}}
+ router-id {{router_id}}
+ auto-cost reference-bandwidth {{ref_bw | default(10000, boolean=true)}}
+ {% for val in ospf_intf %}
+ network {{val.ip}} 0.0.0.0 area {{val.area}}
+ {% if val.passive == True %}
+ passive-interface FastEthernet{{val.name}}
+ {% endif %}
+ {% endfor %}
+!
+{% for val in ospf_intf %}
+{% if val.passive == False %}
+interface FastEthernet{{val.name}}
+ ip ospf hello-interval 1
+{% endif %}
+{% endfor %}
+!

@@ -1,12 +1,28 @@
 from sys import argv
+import subprocess
+import ipaddress
 
-def check_ip_addresses(arg):
-    print(argv)
-    good_ip = open('good_ip.txt', 'r')
-    bad_ip = open('bad_ip.txt', 'r')
-    
-    good_ip.close()
-    bad_ip.close()
-    return(0)
+def check_if_ip_is_network(ip_address):
+    try:
+        ipaddress.ip_network(ip_address)
+        return True
+    except ValueError:
+        return False
 
-check_ip_addresses(argv.pop(0))
+def check_ip_addresses(args):
+    ava = []
+    no_ava = []
+    args.pop(0)
+    for i in args:
+        if check_if_ip_is_network(i) == True: 
+            result = subprocess.run(['ping', '-c', '3', i], stdout=subprocess.DEVNULL)
+            if result.returncode == 0:
+                ava.append(i)
+            else:
+                no_ava.append(i)
+        else:
+            print('IP address {0} not  correct'.format(i))
+    return(ava, no_ava)
+
+a,b = check_ip_addresses(argv)
+print(a,b)

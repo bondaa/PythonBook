@@ -6,6 +6,7 @@ dictn = {'Command': 'show ip int br', 'Vendor': 'Cisco'}
 def parse_command_dynamic(dictn, output_str, index = 'index', template = 'template', printed = 'False'):
     out = []
     output_sh_ip_route_ospf = open(output_str).read()
+    print (output_sh_ip_route_ospf)
     cli_table = clitable.CliTable(index, template)
 
     cli_table.ParseCmd(output_sh_ip_route_ospf, dictn)

@@ -1,0 +1,7 @@
+Value MAC ((\S\S:){5}(\S\S))
+Value IP (([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}))
+Value VLAN (\d+)
+Value INT (\S+\d/\d+)
+
+Start
+  ^${MAC} +${IP} +\S+ +\S+ +${VLAN} +${INT} -> Record
